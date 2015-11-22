@@ -1,5 +1,6 @@
 <h1>Order Id: <%= @order.id %></h1>
 
+   <%= link_to "Go back to dashboard", admin_dashboard_index_path %>
 <ul class="collection with-header">
   <li class="collection-header"><h4>Purchaser's Name: <%= @order.user.username.capitalize %></h4></li>
   <li class="collection-item" id="user-address">Purchaser's Address: <%= @order.user.address %>, <%= @order.user.city %>, <%= @order.user.state %>, <%= @order.user.zip %></li>
@@ -14,4 +15,5 @@
   <li class="collection-item"><strong>Date of Order: <%= @order.created_at.strftime("%b. %d %Y") %></strong></li>
   <li class="collection-item"><strong>Order Total Price: <%=number_to_currency(@order.sum) %></strong></li>
   <li class="collection-item"><strong>Order Status: <%= @order.status %></strong></li>
+
 </ul>

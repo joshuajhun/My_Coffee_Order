@@ -3,7 +3,7 @@ class Admin::OrdersController < Admin::BaseController
     @orders = Order.all
   end
 
-  def show    
+  def show
     @order = Order.find(params[:id])
   end
 end
