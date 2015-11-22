@@ -1,0 +1,9 @@
+<head>
+  <h1>Order Status</h1>
+  <ol>
+    <%@orders.each do |order| %>
+    <li> Order id: <%=link_to "#{order.id}",admin_order_path(order) %> </li>
+    <%end %>
+  </ol>
+  <%= link_to "Go back to dashboard", admin_dashboard_index_path %>
+</head>

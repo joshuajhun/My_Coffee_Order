@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :items, only: [:index, :edit, :update, :new, :create]
     resources :orders, only: [:index, :show]
+    resources :status, only: [:index]
   end
 end
