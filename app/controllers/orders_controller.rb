@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
        current_user.orders << @order
        @order.add_items_to_order(@cart, current_user)
        @order.ordered!
+       @cart.contents.clear
 
       # SendMessage.text
        redirect_to orders_path

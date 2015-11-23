@@ -11,9 +11,9 @@ class Cart
   end
 
   def minus_item(item_id)
-    if contents[item_id.to_s] > 0
+    if contents[item_id.to_s] > 1 
       contents[item_id.to_s] -= 1
-    else contents[item_id.to_s] == 0
+    else
       contents.delete_if {|key,value| value == contents[item_id.to_s]}
     end
   end

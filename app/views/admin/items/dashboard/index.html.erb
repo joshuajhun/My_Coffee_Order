@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="centered">Administrator Dashboard</h2>
+  <hr>
+
+  <br>
+
+  <div class="row">
+    <div class="col s4">
+      <%= link_to 'View items', admin_items_path, class: "waves-effect waves-light btn" %>
+    </div>
+    <div class="col s4">
+      <%= link_to "Edit Account", edit_user_path(@admin), class: "waves-effect waves-light btn" %>
+    </div>
+    <div class="col s4">
+      <%= link_to "Add New Items", new_admin_item_path, class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection with-header">
+        <li class="collection-header"><strong>Order Status</strong></li>
+        <li class="collection-item"><%= link_to "Ordered:",   admin_status_index_path(status: 0) %> <%= Order.where(status: 0).count(:status) %></li>
+        <li class="collection-item"><%= link_to "Paid:",      admin_status_index_path(status: 1) %>  <%= Order.where(status: 1).count(:status) %></li>
+        <li class="collection-item"><%= link_to "Cancelled:", admin_status_index_path(status: 2) %> <%= Order.where(status: 2).count(:status) %></li>
+        <li class="collection-item" id="status"><%= link_to "Completed:", admin_status_index_path(status: 3) %> <%= Order.where(status: 3).count(:status) %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="order-info">
+    <% @orders.each do |order| %>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header<%= order.id %>">
+            <%= link_to "Order number: #{order.id}", admin_order_path(order) %>
+          </div>
+          <div class="collapsible-body">
+            <p>Order Quantity: <%= order.quantity %></p><br>
+            <p>Order Total: <%= number_to_currency(order.sum) %></p>
+          </div>
+        </li>
+      </ul>
+    <%end %>
+  </div>
+</div>
