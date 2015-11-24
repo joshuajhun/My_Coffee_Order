@@ -1,6 +1,4 @@
 <h1 class='container'>Menu Items</h1>
-<!-- <div class="parallax-container">
-   <div class="parallax"><img src="cshop.jpg"></div> -->
  </div>
 <body>
 </div>
@@ -14,7 +12,6 @@
       <th data-field="description">Description</th>
       <th data-field="category">Category</th>
 
-      <!-- <th data-field="add to cart">Add to Cart</th> -->
     </tr>
   </thead>
 
@@ -26,12 +23,10 @@
         <td><%= number_to_currency(item.price)%></td>
         <td><%= image_tag(item.image, class: "avatar circle",height:"32",width:"32")%></td>
         <td><%= item.description %></td>
-        <td><%= item.category_id%> </td>
-        <td><%=button_to edit_admin_item_path(item), method: :get,class: "waves-effect waves-light btn orange small" do %> Edit Item</td>
+        <td><%= item.category.name%> </td>
+        <td><%=button_to admin_edit_item_path(item.slug), method: :get, class: "waves-effect waves-light btn orange small" do %> Edit Item</td>
         <%end %>
       </div>
+    </tr>
+  </tbody>
 <% end %>
-
-<!-- <div id="butooon">
-  <%= button_to "View Cart", cart_path, method: :get %>
-</div> -->

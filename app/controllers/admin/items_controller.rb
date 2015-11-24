@@ -1,6 +1,6 @@
 class Admin::ItemsController < Admin::BaseController
 
-  def new
+def new
     @items = Item.new
   end
 
@@ -19,20 +19,19 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.find_by(slug: params[:slug])
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = Item.find_by(slug: params[:slug])
     @item.update(item_params)
     redirect_to admin_items_path
-    #NEEDTO Add validations and an else if an update doesn't save
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image, :category_id)
+    params.require(:item).permit(:title, :description, :price, :image, :category_id, :slug)
   end
 
 end

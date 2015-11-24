@@ -14,7 +14,7 @@ class AdminEditsItemTest < ActionDispatch::IntegrationTest
       find_button('Edit Item').click
     end
 
-    assert edit_admin_item_path(item1.id), current_path
+    assert admin_edit_item_path(item1.id), current_path
 
     fill_in 'Title', with: 'Updated Title'
     fill_in 'Description', with: 'Updated Description'

@@ -15,9 +15,10 @@
 <%= f.text_field :image %>
 
 <%= f.label :category_id, 'Category ID' %>
-<%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
+<%= f.collection_select :category_id, Category.all, :id, :name,{}, class: "browser-default" %>
 <br>
-<%= f.submit %>
+
+<button class="btn waves-effect waves-light orange small" type="submit" name="action">Create Item </button>
 
 
 <% end %>
