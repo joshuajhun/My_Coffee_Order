@@ -2,10 +2,9 @@ class OrdersController < ApplicationController
 
   before_action :require_authenticated_user
 
-   def require_authenticated_user
-     redirect_to login_path unless current_user
-     flash[:login] ="Must Login"
-   end
+  def require_authenticated_user
+    redirect_to login_path flash[:login] ="Must Login" unless current_user
+  end
 
   def create
     @order = Order.new(quantity: params[:quantity] , sum: params[:sum] )
