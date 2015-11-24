@@ -3,15 +3,15 @@
 <br>
 
 <div class="row">
-  <div class="col s9">
+  <div class="col s12">
     <ul class="collection">
       <%@items.each do |item| %>
       <li class="collection-item avatar" id="item<%= item.id %>">
         <%= image_tag(item.image, class: "circle") %>
         <strong><span class="title"><%= item.title.capitalize %></span></strong>
         <p><%= number_to_currency(item.price) %></p>
-          <%= button_to cart_items_path(id: item.id) do %> 
-          <i class="secondary-content #40c4ff light-blue accent-2 waves-effect waves-light btn"> Add to Cart</i>
+          <%= button_to cart_items_path(id: item.id), class:"secondary-content #40c4ff light-blue accent-2 waves-effect waves-light btn" do %>
+           Add to Cart
         <% end %>
       </li>
       <% end %>

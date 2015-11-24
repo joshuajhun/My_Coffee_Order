@@ -26,8 +26,10 @@
         <td><%= image_tag(item.image, size: "90x90", class: "circle") %></td>
         <td><%= item.quantity%> </td>
         <td>
-          <%= button_to "+", cart_item_path(item.id, edit_action: 'add'), method: :put %>
-          <%= button_to " - ",cart_item_path(item.id), method: :put %>
+          <%= button_to cart_item_path(item.id, edit_action: 'add'), method: :put, class:"btn-floating btn-small waves-effect waves-light red" do %>  +
+          <%end %>
+          <%= button_to cart_item_path(item.id), method: :put, class:"btn-floating btn-small waves-effect waves-light red" do%> -
+          <%end %>
         </td>
         <td><%= link_to "Remove",cart_item_path(item.id), method: :delete %></td>
       </div>
@@ -46,6 +48,8 @@
 </div>
 <br>
 <div class="butooon2">
-   <%= button_to "Checkout", orders_path(sum: @cart.sum, quantity: @cart.total_quantity, user: current_user)%>
+   <%= button_to  orders_path(sum: @cart.sum, quantity: @cart.total_quantity, user: current_user),class: "waves-effect waves-light btn red" do %>
+       <i class="fa fa-shopping-cart"> Checkout</i>
+  <%end %>
 </div>
 <br>

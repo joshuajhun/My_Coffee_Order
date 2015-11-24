@@ -22,7 +22,6 @@ class AdminCanViewAllOrdersTest < ActionDispatch::IntegrationTest
     user_makes_an_order
     logged_in_admin
     visit admin_dashboard_index_path
-
     within(".collapsible-header#{Order.last.id}") do
       assert page.has_content?("Order number: #{Order.last.id}")
     end

@@ -5,13 +5,15 @@
 <body>
 </div>
 
-<table class="container">
+<table class="collection">
   <thead>
     <tr>
       <th data-field="name">Item Name</th>
       <th data-field="price"> Price</th>
       <th data-field="image">Image</th>
       <th data-field="description">Description</th>
+      <th data-field="category">Category</th>
+
       <!-- <th data-field="add to cart">Add to Cart</th> -->
     </tr>
   </thead>
@@ -21,10 +23,12 @@
     <tr>
       <div id="item<%="#{item.id}"%>">
         <td><%= item.title %></td>
-        <td><%= number_to_currency(item.price) %></td>
-        <td><%= image_tag(item.image) %></td>
+        <td><%= number_to_currency(item.price)%></td>
+        <td><%= image_tag(item.image, class: "avatar circle",height:"32",width:"32")%></td>
         <td><%= item.description %></td>
-        <td><%=button_to "Edit Item", edit_admin_item_path(item), method: :get %></td>
+        <td><%= item.category_id%> </td>
+        <td><%=button_to edit_admin_item_path(item), method: :get,class: "waves-effect waves-light btn orange small" do %> Edit Item</td>
+        <%end %>
       </div>
 <% end %>
 

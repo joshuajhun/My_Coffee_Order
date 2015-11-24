@@ -13,6 +13,6 @@
 // = require jquery
 // = require jquery_ujs
 // = require_tree .
-//= require jquery
-//= require materialize-sprockets
-// Initialize collapse button
+// = require jquery
+// = require materialize-sprockets
+// = Initialize collapse button

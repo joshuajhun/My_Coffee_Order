@@ -2,13 +2,8 @@ class OrdersController < ApplicationController
 
   def create
      @order = Order.new(quantity: params[:quantity] , sum: params[:sum] )
-     if @order.save && current_user
-       current_user.orders << @order
-       @order.add_items_to_order(@cart, current_user)
-       @order.ordered!
-       @cart.contents.clear
-
-      # SendMessage.text
+    if OrderConfirm.validate(@cart, current_user, @order)
+       flash[:order] = "Order was succefully placed"
        redirect_to orders_path
      else
        flash[:login] ="Must Login"
@@ -19,7 +14,6 @@ class OrdersController < ApplicationController
   def index
     if current_user
       @orders = current_user.orders
-       flash.now[:order] = "Order was succefully placed"
     else
       flash[:login] ="Must Login"
       redirect_to login_path

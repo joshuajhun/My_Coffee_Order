@@ -10,7 +10,7 @@ class Admin::ItemsController < Admin::BaseController
       redirect_to admin_items_path
     else
       flash[:errors] = "Missing fields. Please try again."
-      redirect_to new_admin_item_path 
+      redirect_to new_admin_item_path
     end
   end
 
@@ -24,7 +24,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(title: params[:item][:title], description: params[:item][:description], price: params[:item][:price], image: params[:item][:image])
+    @item.update(item_params)
     redirect_to admin_items_path
     #NEEDTO Add validations and an else if an update doesn't save
   end
@@ -32,7 +32,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image)
+    params.require(:item).permit(:title, :description, :price, :image, :category_id)
   end
 
 end

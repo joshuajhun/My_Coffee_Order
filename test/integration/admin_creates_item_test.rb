@@ -6,7 +6,7 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
   #       I can create an item.
     logged_in_admin
     visit admin_dashboard_index_path
-    click_link('Add New Items')
+    click_link('Add New Item')
 
     assert new_admin_item_path, current_path
 
@@ -14,7 +14,9 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
     fill_in('Description', with: 'Rad Description of new item')
     fill_in('Price', with: '3')
     fill_in('Image URL', with: 'www.google.com')
-    fill_in('Category ID', with: 'coffee')
+
+    select "Choose a category", from: "Category ID"
+
     find_button('Create Item').click
 
     assert admin_items_path, current_path
@@ -29,7 +31,7 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
   test 'admin must have certain fields or errors will flash' do
     logged_in_admin
     visit admin_dashboard_index_path
-    click_link('Add New Items')
+    click_link('Add New Item')
 
     assert new_admin_item_path, current_path
 
@@ -37,7 +39,7 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
     fill_in('Description', with: '')
     fill_in('Price', with: '')
     fill_in('Image URL', with: 'www.google.com')
-    fill_in('Category ID', with: '')
+    select "Choose a category", from: "Category ID"
     find_button('Create Item').click
 
     assert page.has_content?("Missing fields")

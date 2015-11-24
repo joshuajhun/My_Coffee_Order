@@ -2,4 +2,9 @@
 
 <p>
   Username: <%= @user.username %>
+
+  <% if current_user.admin? %>
+    <%= button_to  admin_dashboard_index_path, method: :get, class:"waves-effect waves-light btn orange" do  %> To Admin Dashboard
+    <%end %>
+  <%end %>
 </p>

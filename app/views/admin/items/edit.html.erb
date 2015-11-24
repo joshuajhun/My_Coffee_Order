@@ -1,5 +1,5 @@
+<div class="form responsive">
 <h1>Edit Items</h1>
-
 <%= form_for(@item, url: admin_item_path) do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -9,5 +9,10 @@
 <%= f.text_field :price %>
 <%= f.label :image %>
 <%= f.text_field :image %>
-<%= f.submit %>
+<%= f.label :category_id %>
+<%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
+<br>
+<button class="btn waves-effect waves-light orange small" type="submit" name="action">Update Item </button>
+
 <% end %>
+</div>
