@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -30,11 +31,9 @@ class UsersController < ApplicationController
 
   def update
     @admin = current_user
-    if @admin.update(user_params)
-      flash[:login_update] = "You have succesfully changed your account information"
-      redirect_to admin_dashboard_index_path
-    else
-    end
+    @admin.update(user_params)
+    flash[:login_update] = "You have succesfully changed your account information"
+    redirect_to admin_dashboard_index_path
   end
 
   private

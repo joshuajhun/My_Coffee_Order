@@ -3,7 +3,7 @@
 <br>
 
 <div class="row">
-  <div class="col s12">
+  <div class="col s9">
     <ul class="collection">
       <%@items.each do |item| %>
       <li class="collection-item avatar" id="item<%= item.id %>">
@@ -17,7 +17,7 @@
       <% end %>
     </ul>
   </div>
-
+<br>
   <div class="col s3" id="butooon">
     <%= button_to cart_path, method: :get, class: "waves-effect waves-light btn black" do %>
       <i class="fa fa-shopping-cart"> View Cart</i>
