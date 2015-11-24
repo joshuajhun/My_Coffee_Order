@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
 
 gem 'jquery-tablesorter'
-
+gem 'rails_12factor'
 
 gem 'figaro'
 
