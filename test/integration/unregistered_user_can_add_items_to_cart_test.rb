@@ -2,7 +2,6 @@ require 'test_helper'
 
 class UnregisteredUserCanAddItemsToCartTest < ActionDispatch::IntegrationTest
 
-  # Background: Items, and a user that is not logged in
   test 'unregistered user can add items to cart' do
     create_category_and_items(2)
     item1 = Item.find_by(title: "pour over1")
@@ -51,7 +50,6 @@ class UnregisteredUserCanAddItemsToCartTest < ActionDispatch::IntegrationTest
     end
 
     click_button "View Cart"
-
 
     within("#item#{item1.id}") do
       assert page.has_content?("2")

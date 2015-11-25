@@ -25,19 +25,14 @@ class AdminCanViewAllOrdersTest < ActionDispatch::IntegrationTest
     within(".collapsible-header#{Order.last.id}") do
       assert page.has_content?("Order number: #{Order.last.id}")
     end
-
-
+    
     find_link("Order number: #{Order.last.id}").visible?
 
     Order.first.completed!
     Order.last.paid!
 
-
     within(".collection") do
       assert page.has_content?("Completed: #{Order.where(status: 0).count(:status)} ")
     end
-
   end
-
-    #   And I can filter orders to display by each status type  ("Ordered", "Paid", "Cancelled", "Completed")
 end

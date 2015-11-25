@@ -1,9 +1,8 @@
 require 'test_helper'
 
 class AdminCreatesItemTest < ActionDispatch::IntegrationTest
-  # As an authenticated Admin:
+
   test 'admin can create an item' do
-  #       I can create an item.
     Category.create(name:"Coffee")
     logged_in_admin
     visit admin_dashboard_index_path
