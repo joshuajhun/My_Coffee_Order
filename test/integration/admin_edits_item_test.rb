@@ -29,7 +29,28 @@ class AdminEditsItemTest < ActionDispatch::IntegrationTest
       assert page.has_content?('Updated Description')
 
       assert page.has_content?('$3.00')
+  end
 
+  test "admin can change an item's category" do
+    create_category_and_items(1)
+    logged_in_admin
 
+    Category.create(name:"filipino")
+    visit admin_items_path
+
+    item1 = Item.find_by(title: 'pour over0')
+    within "#item#{item1.id}" do
+      find_button('Edit Item').click
+    end
+
+    assert admin_edit_item_path(item1.id), current_path
+
+    select:"filipino", from: "item_category_id"
+    click_button('Update Item')
+
+    item_to_check = Item.find_by(title: 'pour over0') do
+      refute page.has_content?('coffee0')
+      assert page.has_content?('filipino')
+    end 
   end
 end

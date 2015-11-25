@@ -6,7 +6,7 @@ class OrderConfirm
       order.add_items_to_order(cart, current_user)
       order.ordered!
       cart.contents.clear
-      SendMessage.text
+      # SendMessage.text
     end
   end
 end
